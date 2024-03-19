@@ -11,7 +11,7 @@ function Banner() {
           lorem ipsum dolor sit amet consectetur adlorem ipsum dolor sit amet
           consectetur ad
         </span>
-        <Link href={"./menu"}>See All</Link>
+        <Link href={"/menu"}>See All</Link>
       </div>
       <div className={Style.right}>
         <img src="images/banner.png" />

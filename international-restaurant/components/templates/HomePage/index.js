@@ -19,7 +19,7 @@ function HomePage() {
       <Guide />
       <Restrictions />
     </div>
-  );
+  )
 }
 
 export default HomePage;
