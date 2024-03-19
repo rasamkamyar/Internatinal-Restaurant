@@ -6,8 +6,10 @@ function Footer() {
         textAlign: "center",
         color: "#fff",
         padding: "8px 0",
-        marginTop: "30px",
-        fontSize: "8px",
+        fontSize: "6px",
+        position: "fixed",
+        width: "100%",
+        bottom:"0"
       }}
     >
       <h1>Establishment 2020 | Based on Tehran </h1>
