@@ -4,7 +4,7 @@ import Dollar from "@/components/icons/Dollar";
 import Link from "next/link";
 
 function Card(props) {
-  const { name, id, details, price } = props;
+  const { name, id, details, price, discount } = props;
   return (
     <div className={Style.container}>
       <img src={`images/${id}.jpeg`} alt={name} />
@@ -17,9 +17,16 @@ function Card(props) {
       </div>
       <div className={Style.price}>
         <Dollar />
-        <span>{price}</span>
+        {discount ? (
+          <span className={Style.discount}>
+            {(price * (100 - discount)) / 100}$
+          </span>
+        ) : (
+          <span>{price}$</span>
+        )}
+        {discount ? <div className={Style.badge}>{discount}%</div> : null}
       </div>
-      <Link href={"/"}>See details</Link>
+      <Link href={`/detail/${id}`}>See details</Link>
     </div>
   );
 }
