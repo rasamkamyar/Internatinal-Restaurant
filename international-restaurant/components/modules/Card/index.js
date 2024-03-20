@@ -26,7 +26,7 @@ function Card(props) {
         )}
         {discount ? <div className={Style.badge}>{discount}%</div> : null}
       </div>
-      <Link href={`/detail/${id}`}>See details</Link>
+      <Link href={`/menu/${id}`}>See details</Link>
     </div>
   );
 }
