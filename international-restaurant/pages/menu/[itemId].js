@@ -4,8 +4,9 @@ import { useRouter } from "next/router";
 function Details({ data }) {
   const router = useRouter();
   if (router.isFallback) {
-    return <h1>loading....</h1>;
+    return <h1>loading...</h1>;
   }
+
   return <DetailsPage {...data} />;
 }
 
@@ -38,6 +39,7 @@ export async function getStaticProps(context) {
       notFound: true,
     };
   }
+
   return {
     props: {
       data,
