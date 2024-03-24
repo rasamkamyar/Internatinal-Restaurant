@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Style from "./index.module.css";
 import { useRouter } from "next/router";
+import Card from "@/components/modules/Card";
 
-function CategoriesPage() {
+function CategoriesPage({ data }) {
+  console.log(data);
   const [query, setQuery] = useState({
     difficulty: "",
     time: "",
@@ -36,6 +38,9 @@ function CategoriesPage() {
         </select>
         <button onClick={searchHandler}>Search</button>
       </div>
+      {data.map((food) => (
+        <Card key={food.id} {...food} />
+      ))}
     </div>
   );
 }

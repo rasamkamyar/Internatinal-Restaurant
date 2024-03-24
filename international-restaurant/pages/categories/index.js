@@ -1,8 +1,7 @@
 import CategoriesPage from "@/components/templates/CategoriesPage";
 
 function Categories({ data }) {
-  console.log(data);
-  return <CategoriesPage />;
+  return <CategoriesPage data={data} />;
 }
 
 export default Categories;
@@ -22,9 +21,9 @@ export async function getServerSideProps(context) {
     const timeResult = item.details.filter((detail) => {
       const cookingTime = detail["Cooking Time"] || "";
       const [timeDetail] = cookingTime.split(" ");
-      if ((time === "less" && +timeDetail <= 30)) {
+      if (time === "less" && timeDetail && +timeDetail <= 30) {
         return detail;
-      } else if ((time === "more" && +timeDetail > 30)) {
+      } else if (time === "more" && timeDetail && +timeDetail > 30) {
         return detail;
       }
     });
@@ -33,7 +32,7 @@ export async function getServerSideProps(context) {
       return item;
     } else if (!time && difficulty && difficultyResult.length) {
       return item;
-    } else if (time && !difficulty && difficultyResult.length) {
+    } else if (time && !difficulty && timeResult.length) {
       return item;
     }
   });
