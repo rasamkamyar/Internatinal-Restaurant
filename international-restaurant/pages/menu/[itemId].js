@@ -32,14 +32,14 @@ export async function getStaticProps(context) {
     params: { itemId },
   } = context;
   try {
-    const res = await fetch(`http://localhost:4000/data/${itemId}`);
+    const res = await fetch(`${process.env.BASE_URL}/data/${itemId}`);
     const data = await res.json();
 
     return {
       props: {
         data,
       },
-      revalidate: 1 * 60 * 60,
+      revalidate: +process.env.REVALIDATE
     };
   } catch (error) {
     return {
