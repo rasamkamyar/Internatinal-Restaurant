@@ -11,6 +11,13 @@ function CategoriesPage() {
   function changeHandler(e) {
     setQuery({ ...query, [e.target.name]: e.target.value });
   }
+  const router = useRouter();
+  function searchHandler() {
+    router.push({
+      pathname: "/categories",
+      query,
+    });
+  }
 
   return (
     <div className={Style.container}>
@@ -27,7 +34,7 @@ function CategoriesPage() {
           <option value="more">More than 30 mins</option>
           <option value="less">Less than 30 mins</option>
         </select>
-        <button>Search</button>
+        <button onClick={searchHandler}>Search</button>
       </div>
     </div>
   );
