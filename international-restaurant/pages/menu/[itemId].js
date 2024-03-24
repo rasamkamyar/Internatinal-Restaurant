@@ -31,19 +31,19 @@ export async function getStaticProps(context) {
   const {
     params: { itemId },
   } = context;
-  const res = await fetch(`http://localhost:4000/data/${itemId}`);
-  const data = await res.json();
+  try {
+    const res = await fetch(`http://localhost:4000/data/${itemId}`);
+    const data = await res.json();
 
-  if (!data.id) {
+    return {
+      props: {
+        data,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
     return {
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      data,
-    },
-    revalidate: 10,
-  };
 }
