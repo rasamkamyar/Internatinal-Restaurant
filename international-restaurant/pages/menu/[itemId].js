@@ -31,19 +31,18 @@ export async function getStaticProps(context) {
   const {
     params: { itemId },
   } = context;
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/data/${itemId}`);
-    const data = await res.json();
 
-    return {
-      props: {
-        data,
-      },
-      revalidate: +process.env.REVALIDATE,
-    };
-  } catch (error) {
+  const res = await fetch(`${process.env.BASE_URL}/data/${itemId}`);
+  const data = await res.json();
+  if (!data.id) {
     return {
       notFound: true,
     };
   }
+  return {
+    props: {
+      data,
+    },
+    revalidate: +process.env.REVALIDATE,
+  };
 }
